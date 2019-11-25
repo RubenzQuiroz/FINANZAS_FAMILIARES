@@ -50,9 +50,78 @@ public class RegistroGasto implements Serializable{
 	@JoinColumn(name="id_estado",nullable=false)
 	private Estado estado;
 	
+	public RegistroGasto() {}
 	
-	
-	
-	
+	public RegistroGasto(Gasto gasto, double monto, LocalDate fechaAlta, List<Persona> personas, Periodo periodo,
+			Estado estado) {
+		this.gasto = gasto;
+		this.monto = monto;
+		this.fechaAlta = fechaAlta;
+		this.personas = personas;
+		this.periodo = periodo;
+		this.estado = estado;
+	}
 
+	public long getIdRegistroGasto() {
+		return idRegistroGasto;
+	}
+
+	public void setIdRegistroGasto(long idRegistroGasto) {
+		this.idRegistroGasto = idRegistroGasto;
+	}
+
+	public Gasto getGasto() {
+		return gasto;
+	}
+
+	public void setGasto(Gasto gasto) {
+		this.gasto = gasto;
+	}
+
+	public double getMonto() {
+		return monto;
+	}
+
+	public void setMonto(double monto) {
+		this.monto = monto;
+	}
+
+	public LocalDate getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(LocalDate fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+
+	public List<Persona> getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(List<Persona> personas) {
+		this.personas = personas;
+	}
+
+	public Periodo getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(Periodo periodo) {
+		this.periodo = periodo;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+	@Override
+	public String toString() {
+		return "RegistroGasto [idRegistroGasto=" + idRegistroGasto + ", gasto=" + gasto + ", monto=" + monto
+				+ ", fechaAlta=" + fechaAlta + ", personas=" + personas + ", periodo=" + periodo + ", estado=" + estado
+				+ "]";
+	}
 }
