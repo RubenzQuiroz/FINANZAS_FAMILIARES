@@ -49,6 +49,9 @@ public class RegistroGasto implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="id_estado",nullable=false)
 	private Estado estado;
+	@ManyToOne
+	@JoinColumn(name = "id_registro_ingreso", nullable = false)
+	private RegistroIngreso registroIngreso;
 	
 	public RegistroGasto() {}
 	
@@ -118,10 +121,18 @@ public class RegistroGasto implements Serializable{
 		this.estado = estado;
 	}
 
+	public RegistroIngreso getRegistroIngreso() {
+		return registroIngreso;
+	}
+
+	public void setRegistroIngreso(RegistroIngreso registroIngreso) {
+		this.registroIngreso = registroIngreso;
+	}
+
 	@Override
 	public String toString() {
 		return "RegistroGasto [idRegistroGasto=" + idRegistroGasto + ", gasto=" + gasto + ", monto=" + monto
 				+ ", fechaAlta=" + fechaAlta + ", personas=" + personas + ", periodo=" + periodo + ", estado=" + estado
-				+ "]";
+				+ ", registroIngreso=" + registroIngreso + "]";
 	}
 }
