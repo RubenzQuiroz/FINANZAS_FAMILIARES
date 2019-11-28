@@ -2,12 +2,14 @@ package com.rqr.project.home.core.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TipoAhorro implements Serializable{
@@ -26,6 +28,8 @@ public class TipoAhorro implements Serializable{
 	private String descripcion;
 	@Column
 	private LocalDate fechaAlta;
+	@OneToMany(mappedBy = "tipoAhorro")
+	private List<AhorroInversion> ahorroInversions;
 	
 	public TipoAhorro() {}
 
@@ -57,6 +61,22 @@ public class TipoAhorro implements Serializable{
 
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
+	}
+
+	public int getIdTipoAhorro() {
+		return idTipoAhorro;
+	}
+
+	public void setIdTipoAhorro(int idTipoAhorro) {
+		this.idTipoAhorro = idTipoAhorro;
+	}
+
+	public List<AhorroInversion> getAhorroInversions() {
+		return ahorroInversions;
+	}
+
+	public void setAhorroInversions(List<AhorroInversion> ahorroInversions) {
+		this.ahorroInversions = ahorroInversions;
 	}
 
 	@Override

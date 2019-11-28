@@ -37,7 +37,7 @@ public class Persona implements Serializable{
 	private String apellido;
 	@Column
 	private LocalDate fechaAlta;
-	@OneToOne(mappedBy="persona")
+	@OneToOne(mappedBy="persona",fetch=FetchType.LAZY)
 	private Usuario usuario;
 	@OneToMany(mappedBy="persona",fetch=FetchType.LAZY)
 	private List<RegistroIngreso> registroIngresos;

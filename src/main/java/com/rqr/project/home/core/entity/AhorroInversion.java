@@ -2,14 +2,17 @@ package com.rqr.project.home.core.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class AhorroInversion implements Serializable{
@@ -33,6 +36,8 @@ public class AhorroInversion implements Serializable{
 	@ManyToOne
 	@JoinColumn(name ="id_tipo_ahorro")
 	private TipoAhorro tipoAhorro;
+	@OneToMany(mappedBy="registroIngreso",fetch=FetchType.LAZY)
+	private List<RegistroAhorroIngreso> registroAhorroIngresos;
 	
 	public AhorroInversion() {}
 
@@ -91,6 +96,14 @@ public class AhorroInversion implements Serializable{
 
 	public void setTipoAhorro(TipoAhorro tipoAhorro) {
 		this.tipoAhorro = tipoAhorro;
+	}
+
+	public List<RegistroAhorroIngreso> getRegistroAhorroIngresos() {
+		return registroAhorroIngresos;
+	}
+
+	public void setRegistroAhorroIngresos(List<RegistroAhorroIngreso> registroAhorroIngresos) {
+		this.registroAhorroIngresos = registroAhorroIngresos;
 	}
 
 	@Override

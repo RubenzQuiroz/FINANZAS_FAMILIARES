@@ -2,14 +2,17 @@ package com.rqr.project.home.core.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class RegistroIngreso implements Serializable{
@@ -38,6 +41,10 @@ public class RegistroIngreso implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="id_periodo",nullable=false)
 	private Periodo periodo;
+	@OneToMany(mappedBy = "registroIngreso",fetch = FetchType.LAZY)
+	private List<RegistroDeuda> registroDeudas;
+	@OneToMany(mappedBy = "registroIngreso",fetch = FetchType.LAZY)
+	private List<RegistroGasto> registroGastos;
 	
 	public RegistroIngreso() {}
 
@@ -103,6 +110,22 @@ public class RegistroIngreso implements Serializable{
 
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
+	}
+
+	public List<RegistroDeuda> getRegistroDeudas() {
+		return registroDeudas;
+	}
+
+	public void setRegistroDeudas(List<RegistroDeuda> registroDeudas) {
+		this.registroDeudas = registroDeudas;
+	}
+
+	public List<RegistroGasto> getRegistroGastos() {
+		return registroGastos;
+	}
+
+	public void setRegistroGastos(List<RegistroGasto> registroGastos) {
+		this.registroGastos = registroGastos;
 	}
 
 	@Override

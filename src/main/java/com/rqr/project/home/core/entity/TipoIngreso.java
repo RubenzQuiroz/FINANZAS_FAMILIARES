@@ -5,12 +5,15 @@ package com.rqr.project.home.core.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author ruben
@@ -33,6 +36,8 @@ public class TipoIngreso implements Serializable{
 	private String descripcion;
 	@Column
 	private LocalDate fechaAlta;
+	@OneToMany(mappedBy = "tipoIngreso",fetch = FetchType.LAZY)
+	private List<Ingreso> ingresos;
 	
 	public TipoIngreso() {}
 	
@@ -65,6 +70,14 @@ public class TipoIngreso implements Serializable{
 	}
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
+	}
+
+	public List<Ingreso> getIngresos() {
+		return ingresos;
+	}
+
+	public void setIngresos(List<Ingreso> ingresos) {
+		this.ingresos = ingresos;
 	}
 
 	@Override

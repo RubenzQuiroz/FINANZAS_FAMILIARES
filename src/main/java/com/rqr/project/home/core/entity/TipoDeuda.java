@@ -2,12 +2,14 @@ package com.rqr.project.home.core.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TipoDeuda implements Serializable{
@@ -27,6 +29,8 @@ public class TipoDeuda implements Serializable{
 	private String descripcion;
 	@Column
 	private LocalDate fechaAlta;
+	@OneToMany(mappedBy = "tipoDeuda")
+	private List<Deuda> deudas;
 	
 	public TipoDeuda() {}
 
@@ -66,6 +70,14 @@ public class TipoDeuda implements Serializable{
 
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
+	}
+
+	public List<Deuda> getDeudas() {
+		return deudas;
+	}
+
+	public void setDeudas(List<Deuda> deudas) {
+		this.deudas = deudas;
 	}
 
 	@Override

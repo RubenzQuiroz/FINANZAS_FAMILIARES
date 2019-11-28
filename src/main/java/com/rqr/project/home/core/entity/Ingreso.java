@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -36,7 +38,8 @@ public class Ingreso implements Serializable{
 	private String descripcion;
 	@Column
 	private LocalDate fechaAlta;
-	@Column
+	@ManyToOne
+	@JoinColumn(name="id_tipo_ingreso",nullable=false)
 	private TipoIngreso tipoIngreso;
 	@OneToMany(mappedBy = "ingreso",fetch = FetchType.LAZY)
 	private List<RegistroIngreso> registroIngresos;
