@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../static/css/bootstrap.css" />
+	<script th:src="@{/js/jquery-3.4.1.js}" src="../static/js/jquery-3.4.1.js"></script>
+	<script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link th:href="@{/css/index.css}" rel="stylesheet" href="../../static/css/index.css" />
+    <link th:href="@{/css/Inputs.css}" rel="stylesheet" href="../static/css/Inputs.css" />
+    <link th:href="@{/css/Buttons.css}" rel="stylesheet" href="../static/css/Buttons.css" />
+    <link th:href="@{/css/Fuentes.css}" rel="stylesheet" href="../static/css/Fuentes.css" />
+    <link th:href="@{/css/Menu.css}" rel="stylesheet" href="../../static/css/Menu.css" />
+    <link th:href="@{/css/Mensajes.css}" rel="stylesheet" href="../static/css/Mensajes.css" />
+    <link th:href="@{/css/Efectos.css}" rel="stylesheet" href="../static/css/Efectos.css" />
+    <link th:href="@{/css/Cajas.css}" rel="stylesheet" href="../static/css/Cajas.css" />
+    <link th:href="@{/css/Tables.css}" rel="stylesheet" href="../static/css/Tables.css" />
+	<script th:src="@{/js/Fondos.js}" src="../static/js/Fondos.js"></script>
+	<title>Facrec</title>
+	 
+</head>
+<body class="background-container">
+  <header th:fragment="header" class="fijo">
+    <div class="Menuheader-container" >
+      <img class="Menuheader-item:nth-child(1) img_logo" th:src="@{/img/Logo.png}" src="/static/Img/Logo.png" />
+      <div class="Menuheader-item:nth-child(2) En_linea_izq">
+        <a class="p_Menu_usurio En_linea_izqnth-child(1)" href="#" style="margin-left:-2%">Bienvenido: [[${#httpServletRequest.remoteUser}]]!</a>
+          <!-- Cerrar Sesion -->
+          <form th:action="@{/facrec/logout}" method="post" class="En_linea_izqnth-child(2)">
+            <button class="btn_Cerrar_Sesion" type="submit">
+              <i class="fas fa-sign-out-alt"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light  " id="menu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/facrec/home}" href="#">Home 
+              	<span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/facrec/home/dashboard}" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Configuracion</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" th:href="@{/facrec/home/config/usuarios/view}" href="#" >Usuarios</a>
+                <a class="dropdown-item" href="#">Perfiles</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Distribuidores</a>
+                <a class="dropdown-item" href="#">Parametros Sap</a>
+                <a class="dropdown-item" href="#">Comisiones</a>
+                <a class="dropdown-item" href="#">Fechas de vencimiento</a>
+                <a class="dropdown-item" href="#">Productos</a>
+                <a class="dropdown-item" th:href="@{/facrec/home/config/deudores/view}" href="#" >Deudores</a>
+                <a class="dropdown-item" th:href="@{/facrec/home/config/estados/view}" href="#" >Estados</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Reportes</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Catalogo de estatus</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="Buscador" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn_Buscar" type="submit"></button>
+          </form>
+        </div>
+      </nav>
+
+      <hr />
+    </header>
+    <!-- Donde se carga el contenido -->
+    <div class="contenedor " style="margin-bottom: 5%">
+ 
+
+    </div>
+    <!-- Pie de pagina -->
+    <footer th:fragment="footer">
+      <div class="col-xl-3 col-lg-3   ">
+        <!-- <img th:src="@{/img/nfl.png}" /> -->
+      </div>
+      <div class="col-xl-6 col-lg-6   "></div>
+      <div class="col-xl-3 col-lg-3   ">
+        <!-- <img th:src="@{/img/layout_icon.png}" /> -->
+      </div>
+    </footer>
+
+    <!-- Los scripts -->
+
+    <!-- Fondo de particulas -->
+
+    <!-- <script src="/static/js/particles.js"></script>
+<script src="/static/js/app.js"></script> -->
+    <!-- Cambio de Color del Menu -->
+    <script>
+      $(function() {
+        $(window).on("scroll", function() {
+          if ($(window).scrollTop() > 5) {
+            $(".navbar").addClass("cambio_color_menu");
+
+            $(".dropdown-menu").addClass("cambio_color_menu");
+            $(".Menuheader-container").addClass("cambio_color_menu_header");
+          } else {
+            //remove the background property so it comes transparent again (defined in your css)
+            $(".navbar").removeClass("cambio_color_menu");
+
+            $(".dropdown-menu").removeClass("cambio_color_menu");
+            $(".Menuheader-container").removeClass("cambio_color_menu_header");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

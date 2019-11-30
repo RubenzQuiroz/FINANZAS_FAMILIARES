@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../static/css/bootstrap.css" />
+	<script th:src="@{/js/jquery-3.4.1.js}" src="../static/js/jquery-3.4.1.js"></script>
+	<script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Finanzas</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-3 col-lg-3 col-md-6 col-6">
+				<!--  <img th:src="@{/img/layout_set_logo.png}"/>-->
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-0 col-0 "></div>
+			<div class="col-xl-3 col-lg-3 col-md-6 col-6 ">
+				<a class="navbar-brand" href="#">Bienvenido: [[${#httpServletRequest.remoteUser}]]!</a>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-12 ">
+				<hr>
+			</div>
+		</div>
+		
+		<div class="row">
+			
+			<div class="col-xl-3 col-lg-2">
+				<fieldset>
+					<legend>Tipo Ingresos</legend>
+					
+					<form th:action="@{/home/finanzas/config/tipoingreso/view}" method="post" th:object="${tipoIngreso}">
+					  <input th:field="${tipoIngreso.idTipoIngreso}" th:value="${tipoIngreso.idTipoIngreso}" type="hidden"  id="idTipoIngreso" >
+					  <input th:field="${tipoIngreso.fechaAlta}" th:value="${tipoIngreso.fechaAlta}" type="hidden"  id="fechaAlta" >
+					  <div class="form-group">
+					    <label class="col-form-label col-form-label-sm" for="nombre">Nombre: </label>
+					    <input th:field="${tipoIngreso.nombre}" th:value="${tipoIngreso.nombre}" type="text" class="form-control form-control-sm" id="nombre" aria-describedby="nombreHelp" placeholder="Enter Nombre">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label class="col-form-label col-form-label-sm" for="codigo">Descripcion: </label>
+					    <input th:field="${tipoIngreso.descripcion}" th:value="${tipoIngreso.descripcion}" type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="Enter descripcion">
+					  </div>
+					  				  
+					  <div class="form-group">
+					  	<button type="submit" class="btn btn-primary">Guardar</button>
+					  	<button type="reset" class="btn btn-primary">Cancelar</button>
+					  </div>
+					</form>
+					
+				</fieldset>
+				
+			</div>
+			<div class="col-xl-9 col-lg-9">
+				<div class="row">
+					<div class="col-xl-4 col-lg-6">
+						<h4>Lista de Tipos de Ingreso</h4>
+					</div>
+					<div class="col-xl-5 col-lg-4"></div>
+					<div class="col-xl-3 col-lg-2">
+						<!--  <img th:src="@{/img/excel.png}"/>
+						<img th:src="@{/img/csv.png}"/>
+						<img th:src="@{/img/pdf.png}"/>-->
+					</div>
+				</div>
+				<!-- tabla  -->
+				<table class="table table-sm">
+				  <thead class="thead-light">
+				    <tr>
+				      <th class="th th-sm" scope="col">#ID</th>
+				      <th class="th th-sm" scope="col">NOMBRE</th>
+				      <th class="th th-sm" scope="col" colspan="2">DESCRIPCION</th>
+				      <th class="th th-sm" scope="col" colspan="2">FECHA ALTA</th>
+				      <th class="th th-sm" scope="col"></th>
+				    </tr>
+				    <tr>
+				      <th class="th th-sm" scope="col">
+				      	 <input type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="ID">
+				      </th>
+				      <th class="th th-sm" scope="col">
+				      	<input type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="NOMBRE">
+				      </th>
+				      <th class="th th-sm" scope="col" colspan="2">
+				      	<input type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="DESCRIPCION">
+				      </th>
+				      <th class="th th-sm" scope="col" colspan="2">
+				      	<input type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="Fecha">
+				      </th>
+				      <th class="th th-sm" scope="col">
+				      </th>
+				      
+				    </tr>
+				  </thead>
+				  <tbody th:each="tipoingreso : ${tipoIngresoList}">
+				    <tr>
+				      <th class="th th-sm" th:text="${tipoingreso.idTipoIngreso}" scope="row"></th>
+				      <td class="th th-sm" th:text="${tipoingreso.nombre}">Mark</td>
+				      <td class="th th-sm" th:text="${tipoingreso.descripcion}" colspan="2">Otto</td>
+				      <td class="th th-sm" th:text="${tipoingreso.fechaAlta}" colspan="2">Otto</td>
+				      <td class="th th-sm">
+				      	<!--  <a th:href="@{/facrec/home/config/deudores/view/edit?mod=}+${deudor.idDeudor}">
+				      		<img alt="MODIFICAR" th:src="@{/img/edit.png}"/>
+				      	</a>-->
+				      </td>
+				      
+				    </tr>
+				  </tbody>
+				</table>
+				<!-- fin tabla -->
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col-12">
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-4"></div>
+			<div class="col-7">
+			</div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-12 ">
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-xl-3 col-lg-3 col-md-5 col-12 ">
+					<!--  <img th:src="@{/img/seleccion.png}"/>-->
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-2 col-12 ">
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-5 col-12 ">
+					<!--  <img th:src="@{/img/layout_icon.png}"/>-->
+				</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -14,12 +14,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author ruben
  *
  */
 @Entity
+@Table(name = "TIPO_INGRESO")
 public class TipoIngreso implements Serializable{
 	
 	/**
