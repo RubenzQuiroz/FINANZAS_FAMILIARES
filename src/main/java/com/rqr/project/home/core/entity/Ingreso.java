@@ -46,6 +46,8 @@ public class Ingreso implements Serializable{
 	@OneToMany(mappedBy = "ingreso",fetch = FetchType.LAZY)
 	private List<RegistroIngreso> registroIngresos;
 	
+	public Ingreso() {}
+	
 	public Ingreso(String nombre, String descripcion, LocalDate fechaAlta, TipoIngreso tipoIngreso) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;

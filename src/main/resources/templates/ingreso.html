@@ -31,18 +31,29 @@
 				<fieldset>
 					<legend>Registra Ingresos</legend>
 					
-					<form th:action="@{/home/finanzas/config/tipoingreso/view}" method="post" th:object="${tipoIngreso}">
-					  <input th:field="${tipoIngreso.idTipoIngreso}" th:value="${tipoIngreso.idTipoIngreso}" type="hidden"  id="idTipoIngreso" >
-					  <input th:field="${tipoIngreso.fechaAlta}" th:value="${tipoIngreso.fechaAlta}" type="hidden"  id="fechaAlta" >
+					<form th:action="@{/home/finanzas/config/ingreso/view}" method="post" th:object="${ingreso}">
+					  <input th:field="${ingreso.idIngreso}" th:value="${ingreso.idIngreso}" type="hidden"  id="idIngreso" >
+					  <input th:field="${ingreso.fechaAlta}" th:value="${ingreso.fechaAlta}" type="hidden"  id="fechaAlta" >
 					  <div class="form-group">
 					    <label class="col-form-label col-form-label-sm" for="nombre">Nombre: </label>
-					    <input th:field="${tipoIngreso.nombre}" th:value="${tipoIngreso.nombre}" type="text" class="form-control form-control-sm" id="nombre" aria-describedby="nombreHelp" placeholder="Enter Nombre">
+					    <input th:field="${ingreso.nombre}" th:value="${ingreso.nombre}" type="text" class="form-control form-control-sm" id="nombre" aria-describedby="nombreHelp" placeholder="Enter Nombre">
 					  </div>
 					  
 					  <div class="form-group">
 					    <label class="col-form-label col-form-label-sm" for="codigo">Descripcion: </label>
-					    <input th:field="${tipoIngreso.descripcion}" th:value="${tipoIngreso.descripcion}" type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="Enter descripcion">
+					    <input th:field="${ingreso.descripcion}" th:value="${ingreso.descripcion}" type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="Enter descripcion">
 					  </div>
+					  
+					  <div class="form-group">
+					    <label for="exampleFormControlSelect2">Selecciona Perfiles a aplicar</label> 
+					    <select class="form-control form-control-sm"
+								th:field="${ingreso.tipoIngresoModel.idTipoIngreso}" id="tipoIngresoModel"
+								aria-describedby="tipoIngresoModelHelp"
+								placeholder="Selecciona tipoIngreso">
+								<option th:each="itemEdo : ${tiposIngresos}"
+									th:value="${itemEdo.idTipoIngreso}" th:text="${itemEdo.nombre}">Activo</option>
+						</select>
+						</div>
 					  				  
 					  <div class="form-group">
 					  	<button type="submit" class="btn btn-primary">Guardar</button>
@@ -56,7 +67,7 @@
 			<div class="col-xl-9 col-lg-9">
 				<div class="row">
 					<div class="col-xl-4 col-lg-6">
-						<h4>Lista de Tipos de Ingreso</h4>
+						<h4>Lista de Ingresos</h4>
 					</div>
 					<div class="col-xl-5 col-lg-4"></div>
 					<div class="col-xl-3 col-lg-2">
@@ -71,6 +82,7 @@
 				    <tr>
 				      <th class="th th-sm" scope="col">#ID</th>
 				      <th class="th th-sm" scope="col">NOMBRE</th>
+				      <th class="th th-sm" scope="col">TIPO INGRESO</th>
 				      <th class="th th-sm" scope="col" colspan="2">DESCRIPCION</th>
 				      <th class="th th-sm" scope="col" colspan="2">FECHA ALTA</th>
 				      <th class="th th-sm" scope="col"></th>
@@ -81,6 +93,9 @@
 				      </th>
 				      <th class="th th-sm" scope="col">
 				      	<input type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="NOMBRE">
+				      </th>
+				      <th class="th th-sm" scope="col">
+				      	<input type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="TIPO INGRESO">
 				      </th>
 				      <th class="th th-sm" scope="col" colspan="2">
 				      	<input type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="DESCRIPCION">
@@ -93,12 +108,13 @@
 				      
 				    </tr>
 				  </thead>
-				  <tbody th:each="tipoingreso : ${tipoIngresoList}">
+				  <tbody th:each="ingrso : ${datList}">
 				    <tr>
-				      <th class="th th-sm" th:text="${tipoingreso.idTipoIngreso}" scope="row"></th>
-				      <td class="th th-sm" th:text="${tipoingreso.nombre}">Mark</td>
-				      <td class="th th-sm" th:text="${tipoingreso.descripcion}" colspan="2">Otto</td>
-				      <td class="th th-sm" th:text="${tipoingreso.fechaAlta}" colspan="2">Otto</td>
+				      <th class="th th-sm" th:text="${ingrso.idIngreso}" scope="row"></th>
+				      <td class="th th-sm" th:text="${ingrso.nombre}">Mark</td>
+				      <td class="th th-sm" th:text="${ingrso.tipoIngresoModel.nombre}">Mark</td>
+				      <td class="th th-sm" th:text="${ingrso.descripcion}" colspan="2">Otto</td>
+				      <td class="th th-sm" th:text="${ingrso.fechaAlta}" colspan="2">Otto</td>
 				      <td class="th th-sm">
 				      	<!--  <a th:href="@{/facrec/home/config/deudores/view/edit?mod=}+${deudor.idDeudor}">
 				      		<img alt="MODIFICAR" th:src="@{/img/edit.png}"/>

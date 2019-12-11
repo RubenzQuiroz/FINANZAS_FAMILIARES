@@ -29,19 +29,24 @@
 			
 			<div class="col-xl-3 col-lg-2">
 				<fieldset>
-					<legend>Registra Ingresos</legend>
+					<legend>Registra tipo gasto</legend>
 					
-					<form th:action="@{/home/finanzas/config/tipoingreso/view}" method="post" th:object="${tipoIngreso}">
-					  <input th:field="${tipoIngreso.idTipoIngreso}" th:value="${tipoIngreso.idTipoIngreso}" type="hidden"  id="idTipoIngreso" >
-					  <input th:field="${tipoIngreso.fechaAlta}" th:value="${tipoIngreso.fechaAlta}" type="hidden"  id="fechaAlta" >
+					<form th:action="@{/home/finanzas/config/tipogasto/view}" method="post" th:object="${obj}">
+					  <input th:field="${obj.idTipoGasto}" th:value="${obj.idTipoGasto}" type="hidden"  id="idTipoGasto" >
+					  <input th:field="${obj.fechaAlta}" th:value="${obj.fechaAlta}" type="hidden"  id="fechaAlta" >
 					  <div class="form-group">
 					    <label class="col-form-label col-form-label-sm" for="nombre">Nombre: </label>
-					    <input th:field="${tipoIngreso.nombre}" th:value="${tipoIngreso.nombre}" type="text" class="form-control form-control-sm" id="nombre" aria-describedby="nombreHelp" placeholder="Enter Nombre">
+					    <input th:field="${obj.nombre}" th:value="${obj.nombre}" type="text" class="form-control form-control-sm" id="nombre" aria-describedby="nombreHelp" placeholder="Enter Nombre">
 					  </div>
 					  
 					  <div class="form-group">
 					    <label class="col-form-label col-form-label-sm" for="codigo">Descripcion: </label>
-					    <input th:field="${tipoIngreso.descripcion}" th:value="${tipoIngreso.descripcion}" type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="Enter descripcion">
+					    <input th:field="${obj.descripcion}" th:value="${obj.descripcion}" type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="Enter descripcion">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label class="col-form-label col-form-label-sm" for="monto">Monto Estimado: </label>
+					    <input th:field="${obj.monto}" th:value="${obj.monto}" type="text" class="form-control form-control-sm" id="monto" aria-describedby="codigoHelp" placeholder="Enter monto">
 					  </div>
 					  				  
 					  <div class="form-group">
@@ -56,7 +61,7 @@
 			<div class="col-xl-9 col-lg-9">
 				<div class="row">
 					<div class="col-xl-4 col-lg-6">
-						<h4>Lista de Tipos de Ingreso</h4>
+						<h4>Lista de Tipos de Gastos</h4>
 					</div>
 					<div class="col-xl-5 col-lg-4"></div>
 					<div class="col-xl-3 col-lg-2">
@@ -93,12 +98,13 @@
 				      
 				    </tr>
 				  </thead>
-				  <tbody th:each="tipoingreso : ${tipoIngresoList}">
+				  <tbody th:each="tipogasto : ${datList}">
 				    <tr>
-				      <th class="th th-sm" th:text="${tipoingreso.idTipoIngreso}" scope="row"></th>
-				      <td class="th th-sm" th:text="${tipoingreso.nombre}">Mark</td>
-				      <td class="th th-sm" th:text="${tipoingreso.descripcion}" colspan="2">Otto</td>
-				      <td class="th th-sm" th:text="${tipoingreso.fechaAlta}" colspan="2">Otto</td>
+				      <th class="th th-sm" th:text="${tipogasto.idTipoGasto}" scope="row"></th>
+				      <td class="th th-sm" th:text="${tipogasto.nombre}">Mark</td>
+				      <td class="th th-sm" th:text="${tipogasto.descripcion}" colspan="2">Otto</td>
+				      <td class="th th-sm" th:text="${tipogasto.monto}" colspan="2">Otto</td>
+				      <td class="th th-sm" th:text="${tipogasto.fechaAlta}" colspan="2">Otto</td>
 				      <td class="th th-sm">
 				      	<!--  <a th:href="@{/facrec/home/config/deudores/view/edit?mod=}+${deudor.idDeudor}">
 				      		<img alt="MODIFICAR" th:src="@{/img/edit.png}"/>

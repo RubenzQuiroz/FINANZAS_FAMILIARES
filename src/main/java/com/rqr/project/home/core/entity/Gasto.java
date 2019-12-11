@@ -41,6 +41,8 @@ public class Gasto implements Serializable{
 	@OneToMany(mappedBy = "gasto",fetch = FetchType.LAZY)
 	private List<RegistroGasto> registroGastos;
 	
+	public Gasto() {}
+	
 	public Gasto(String nombre, String descripcion, TipoGasto tipoGasto) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
