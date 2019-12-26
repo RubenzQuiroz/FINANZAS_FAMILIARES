@@ -16,7 +16,7 @@ import com.rqr.project.home.core.model.TipoIngresoModel;
 import com.rqr.project.home.core.service.TipoIngresoService;
 
 @Controller
-@RequestMapping("/home/finanzas/config/tipoingreso")
+@RequestMapping("/tohol/finanzas/config/tipoingreso")
 public class TipoIngresoController {
 	@Autowired
 	@Qualifier("tipoIngresoService")

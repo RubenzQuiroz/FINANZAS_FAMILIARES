@@ -8,17 +8,9 @@
 	<title>Finanzas</title>
 </head>
 <body>
+	<header th:replace="layouts/base::header"></header>
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xl-3 col-lg-3 col-md-6 col-6">
-				<!--  <img th:src="@{/img/layout_set_logo.png}"/>-->
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-0 col-0 "></div>
-			<div class="col-xl-3 col-lg-3 col-md-6 col-6 ">
-				<a class="navbar-brand" href="#">Bienvenido: [[${#httpServletRequest.remoteUser}]]!</a>
-			</div>
-		</div>
-		
+				
 		<div class="row">
 			<div class="col-xl-12 col-lg-12 col-md-12 col-12 ">
 				<hr>
@@ -42,11 +34,6 @@
 					  <div class="form-group">
 					    <label class="col-form-label col-form-label-sm" for="codigo">Descripcion: </label>
 					    <input th:field="${obj.descripcion}" th:value="${obj.descripcion}" type="text" class="form-control form-control-sm" id="codigo" aria-describedby="codigoHelp" placeholder="Enter descripcion">
-					  </div>
-					  
-					  <div class="form-group">
-					    <label class="col-form-label col-form-label-sm" for="monto">Monto Estimado: </label>
-					    <input th:field="${obj.monto}" th:value="${obj.monto}" type="text" class="form-control form-control-sm" id="monto" aria-describedby="codigoHelp" placeholder="Enter monto">
 					  </div>
 					  				  
 					  <div class="form-group">
@@ -103,7 +90,6 @@
 				      <th class="th th-sm" th:text="${tipogasto.idTipoGasto}" scope="row"></th>
 				      <td class="th th-sm" th:text="${tipogasto.nombre}">Mark</td>
 				      <td class="th th-sm" th:text="${tipogasto.descripcion}" colspan="2">Otto</td>
-				      <td class="th th-sm" th:text="${tipogasto.monto}" colspan="2">Otto</td>
 				      <td class="th th-sm" th:text="${tipogasto.fechaAlta}" colspan="2">Otto</td>
 				      <td class="th th-sm">
 				      	<!--  <a th:href="@{/facrec/home/config/deudores/view/edit?mod=}+${deudor.idDeudor}">

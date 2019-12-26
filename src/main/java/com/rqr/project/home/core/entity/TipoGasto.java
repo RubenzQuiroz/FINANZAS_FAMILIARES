@@ -30,8 +30,6 @@ public class TipoGasto {
 	private String descripcion;
 	@Column
 	private LocalDate fechaAlta;
-	@Column
-	private double monto;
 	@OneToMany(mappedBy="tipoGasto",fetch=FetchType.LAZY)
 	private List<Gasto> gastos;
 	
@@ -59,15 +57,9 @@ public class TipoGasto {
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-	public double getMonto() {
-		return monto;
-	}
-	public void setMonto(double monto) {
-		this.monto = monto;
-	}
 	@Override
 	public String toString() {
 		return "TipoGasto [idTipoGasto=" + idTipoGasto + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", fechaAlta=" + fechaAlta + ", monto=" + monto + "]";
+				+ ", fechaAlta=" + fechaAlta + "]";
 	}
 }

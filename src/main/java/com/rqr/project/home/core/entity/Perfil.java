@@ -29,6 +29,10 @@ public class Perfil implements Serializable {
 
 	public Perfil() {
 	}
+	
+	public Perfil(int idPerfil) {
+		this.idPerfil = idPerfil;
+	}
 
 	public Perfil(String nombrePerfil, String descripcion, Date fechaAlta) {
 		this.nombrePerfil = nombrePerfil;

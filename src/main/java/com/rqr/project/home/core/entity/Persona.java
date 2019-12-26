@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  * @author ruben
@@ -37,13 +36,17 @@ public class Persona implements Serializable{
 	private String apellido;
 	@Column
 	private LocalDate fechaAlta;
-	@OneToOne(mappedBy="persona",fetch=FetchType.LAZY)
-	private Usuario usuario;
+	@OneToMany(mappedBy="persona",fetch=FetchType.LAZY)
+	private List<Usuario> usuarios;
 	@OneToMany(mappedBy="persona",fetch=FetchType.LAZY)
 	private List<RegistroIngreso> registroIngresos;
 		
 	public Persona() {}
 	
+	public Persona(int idPersona) {
+		this.idPersona = idPersona;
+	}
+
 	public Persona(String nombre, String apellido, LocalDate fechaAlta) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -74,14 +77,15 @@ public class Persona implements Serializable{
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-	public Usuario getUsuario() {
-		return usuario;
+		
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
-	
+
 	public List<RegistroIngreso> getRegistroIngresos() {
 		return registroIngresos;
 	}

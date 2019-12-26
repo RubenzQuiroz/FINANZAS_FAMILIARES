@@ -25,10 +25,10 @@ public class TipoIngresoConverterImp implements TipoIngresoConverter{
 			}
 			
 			if(tipoIngresoModel.getNombre()!=null)
-				tipoIngreso.setNombre(tipoIngresoModel.getNombre());
+				tipoIngreso.setNombre(tipoIngresoModel.getNombre().toUpperCase());
 			
 			if(tipoIngresoModel.getDescripcion()!=null)
-				tipoIngreso.setDescripcion(tipoIngresoModel.getDescripcion());
+				tipoIngreso.setDescripcion(tipoIngresoModel.getDescripcion().toUpperCase());
 			
 			if(tipoIngresoModel.getFechaAlta()!=null) {
 				tipoIngreso.setFechaAlta(tipoIngresoModel.getFechaAlta());

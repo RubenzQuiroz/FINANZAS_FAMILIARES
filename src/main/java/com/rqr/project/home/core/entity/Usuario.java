@@ -16,7 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -41,7 +41,7 @@ public class Usuario implements Serializable {
 	private String username;
 	@Column
 	private String password;
-	@OneToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_persona",nullable=false)
 	private Persona persona;
 	@Column (name ="fecha_alta")

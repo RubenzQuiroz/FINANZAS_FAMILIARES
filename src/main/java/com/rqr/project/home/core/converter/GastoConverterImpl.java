@@ -29,9 +29,9 @@ public class GastoConverterImpl implements GastoConverter{
 				if(gastoModel.getIdGasto()!=0)
 					gasto.setIdGasto(gastoModel.getIdGasto());
 				if(gastoModel.getDescripcion()!=null)
-					gasto.setDescripcion(gastoModel.getDescripcion());
+					gasto.setDescripcion(gastoModel.getDescripcion().toUpperCase());
 				if(gastoModel.getNombre()!=null)
-					gasto.setNombre(gastoModel.getNombre());
+					gasto.setNombre(gastoModel.getNombre().toUpperCase());
 				if(gastoModel.getTipoGastoModel()!=null)
 					gasto.setTipoGasto(tipoGastoConverter.modelToEntidad(gastoModel.getTipoGastoModel()));
 			}
@@ -54,11 +54,11 @@ public class GastoConverterImpl implements GastoConverter{
 				gastoModel = new GastoModel();
 				
 				if(gasto.getDescripcion()!=null)
-					gastoModel.setDescripcion(gasto.getDescripcion());
+					gastoModel.setDescripcion(gasto.getDescripcion().toUpperCase());
 				if(gasto.getIdGasto()!=0)
 					gastoModel.setIdGasto(gasto.getIdGasto());
 				if(gasto.getNombre()!=null)
-					gastoModel.setNombre(gasto.getNombre());
+					gastoModel.setNombre(gasto.getNombre().toUpperCase());
 				if(gasto.getTipoGasto()!=null)
 					gastoModel.setTipoGastoModel(tipoGastoConverter.entidadToModel(gasto.getTipoGasto()));
 			}

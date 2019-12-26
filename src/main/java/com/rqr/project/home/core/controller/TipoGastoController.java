@@ -14,7 +14,7 @@ import com.rqr.project.home.core.model.TipoGastoModel;
 import com.rqr.project.home.core.service.TipoGastoService;
 
 @Controller
-@RequestMapping("/home/finanzas/config/tipogasto")
+@RequestMapping("/tohol/finanzas/config/tipogasto")
 public class TipoGastoController {
 	@Autowired
 	@Qualifier("tipoGastoService")

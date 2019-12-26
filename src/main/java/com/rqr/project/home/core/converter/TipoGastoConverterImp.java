@@ -21,7 +21,7 @@ public class TipoGastoConverterImp implements TipoGastoConverter {
 			tipoGasto = new TipoGasto();
 			
 			if(tipoGastoModel.getDescripcion()!=null)
-				tipoGasto.setDescripcion(tipoGastoModel.getDescripcion());
+				tipoGasto.setDescripcion(tipoGastoModel.getDescripcion().toUpperCase());
 			if(tipoGastoModel.getFechaAlta()!=null) {
 				tipoGasto.setFechaAlta(tipoGastoModel.getFechaAlta());
 			} else {
@@ -29,10 +29,8 @@ public class TipoGastoConverterImp implements TipoGastoConverter {
 			}
 			if(tipoGastoModel.getIdTipoGasto()!=0)
 				tipoGasto.setIdTipoGasto(tipoGastoModel.getIdTipoGasto());
-			if(tipoGastoModel.getMonto()!=0)
-				tipoGasto.setMonto(tipoGastoModel.getMonto());
 			if(tipoGastoModel.getNombre()!=null)
-				tipoGasto.setNombre(tipoGastoModel.getNombre());
+				tipoGasto.setNombre(tipoGastoModel.getNombre().toUpperCase());
 			
 		} catch (Exception e) {
 			throw new TipoGastoConverterException(e.getMessage());
@@ -71,13 +69,11 @@ public class TipoGastoConverterImp implements TipoGastoConverter {
 				if(tipoGasto.getIdTipoGasto()!=0)
 					tipoGastoModel.setIdTipoGasto(tipoGasto.getIdTipoGasto());
 				if(tipoGasto.getDescripcion()!=null)
-					tipoGastoModel.setDescripcion(tipoGasto.getDescripcion());
+					tipoGastoModel.setDescripcion(tipoGasto.getDescripcion().toUpperCase());
 				if(tipoGasto.getFechaAlta()!=null)
 					tipoGastoModel.setFechaAlta(tipoGasto.getFechaAlta());
-				if(tipoGasto.getMonto()!=0)
-					tipoGastoModel.setMonto(tipoGasto.getMonto());
 				if(tipoGasto.getNombre()!=null)
-					tipoGastoModel.setNombre(tipoGasto.getNombre());
+					tipoGastoModel.setNombre(tipoGasto.getNombre().toUpperCase());
 			}
 		} catch (Exception e) {
 			throw new TipoGastoConverterException(""+e.getMessage());
